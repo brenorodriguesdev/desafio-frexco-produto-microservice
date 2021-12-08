@@ -1,5 +1,6 @@
+import { CriarProdutoModel } from "../models/criar-produto";
 import { ProdutoModel } from "../models/produto";
 
 export interface CriarProdutoUseCase {
-    criar: (data: ProdutoModel) => Promise<ProdutoModel | Error>
+    criar: (data: CriarProdutoModel) => Promise<ProdutoModel | Error>
 }
