@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'ty
 import { Categoria } from './categoria'
 
 @Entity('produto')
-export class Banco {
+export class Produto {
   @PrimaryGeneratedColumn('increment')
   id: number
 
