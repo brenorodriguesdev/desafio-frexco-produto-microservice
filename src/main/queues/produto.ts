@@ -5,8 +5,8 @@ import { makeDeletarProdutoController } from "../factories/controllers/deletar-p
 import { makeListarProdutosController } from "../factories/controllers/listar-produtos";
 
 export default (channel: any): void => {
-    channel.consume('criar-produto', adaptQueue(makeCriarProdutoController()), { noAck: true });
-    channel.consume('atualizar-produto', adaptQueue(makeAtualizarProdutoController()), { noAck: true });
-    channel.consume('deletar-produto', adaptQueue(makeDeletarProdutoController()), { noAck: true });
-    channel.consume('listar-produtos', adaptQueue(makeListarProdutosController()), { noAck: true });
+    channel.consume('criar-produto', adaptQueue(channel, makeCriarProdutoController()));
+    channel.consume('atualizar-produto', adaptQueue(channel, makeAtualizarProdutoController()));
+    channel.consume('deletar-produto', adaptQueue(channel, makeDeletarProdutoController()));
+    channel.consume('listar-produtos', adaptQueue(channel, makeListarProdutosController()));
 }

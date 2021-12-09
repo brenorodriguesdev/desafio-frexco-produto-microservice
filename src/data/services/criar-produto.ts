@@ -12,7 +12,7 @@ export class CriarProdutoService implements CriarProdutoUseCase {
             return new Error('Essa categoria não foi encontrada!')
         }
         
-        await this.produtoRepository.create({
+        return await this.produtoRepository.create({
             categoria,
             nome: data.nome
         })
