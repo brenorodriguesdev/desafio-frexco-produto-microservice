@@ -7,4 +7,9 @@ export class CategoriaRepositoryTypeORM implements CategoriaRepository {
         const categoriaRepository = getRepository(Categoria)
         return await categoriaRepository.findOne(id)
     }
+
+    async getAll(): Promise<Categoria[]> {
+        const categoriaRepository = getRepository(Categoria)
+        return await categoriaRepository.find()
+    }
 }
