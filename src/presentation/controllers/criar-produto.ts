@@ -15,6 +15,9 @@ export class CriarProdutoController implements Controller {
             nome,
             idCategoria
         })
+        if (produto instanceof Error) {
+            throw produto
+        }
         return produto
     }
 }

@@ -11,10 +11,13 @@ export class AtualizarProdutoController implements Controller {
             throw error
         }
         const { idCategoria, nome, id } = AMQPRequest.payload
-        await this.atualizarProdutoUseCase.atualizar({
+        const result = await this.atualizarProdutoUseCase.atualizar({
             id,
             nome,
             idCategoria
         })
+        if (result instanceof Error) {
+            throw result
+        }
     }
 }

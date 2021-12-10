@@ -11,6 +11,9 @@ export class DeletarProdutoController implements Controller {
             throw error
         }
         const { id } = AMQPRequest.payload
-        await this.deletarProdutoUseCase.deletar(id)
+        const result = await this.deletarProdutoUseCase.deletar(id)
+        if (result instanceof Error) {
+            throw result
+        }
     }
 }
