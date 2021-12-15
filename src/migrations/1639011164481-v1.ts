@@ -62,5 +62,7 @@ export class v11639011164481 implements MigrationInterface {
         await queryRunner.dropForeignKey("produto", foreignKey);
 
         await queryRunner.dropTable("produto");
+        await queryRunner.dropTable("categoria");
+
     }
 }
