@@ -19,21 +19,21 @@ const makeSut = (): SutTypes => {
 }
 
 describe('BuscarProduto Service', () => {
-    test('Garantir que produtoRepository findById seja chamado com os valores corretos', async () => {
+    test('Garantir que produtoRepository getById seja chamado com os valores corretos', async () => {
         const { sut, produtoRepository } = makeSut()
-        const findByIdSpy = jest.spyOn(produtoRepository, 'getById')
+        const getByIdSpy = jest.spyOn(produtoRepository, 'getById')
         await sut.buscar(1)
-        expect(findByIdSpy).toHaveBeenCalledWith(1)
+        expect(getByIdSpy).toHaveBeenCalledWith(1)
     })
 
-    test('Garantir que se o produtoRepository findById retornar uma exceção o serviço repassará a exceção', async () => {
+    test('Garantir que se o produtoRepository getById retornar uma exceção o serviço repassará a exceção', async () => {
         const { sut, produtoRepository } = makeSut()
         jest.spyOn(produtoRepository, 'getById').mockImplementationOnce(() => { throw new Error() })
         const promise = sut.buscar(1)
         await expect(promise).rejects.toThrow()
     })
 
-    test('Garantir que se o produtoRepository findById retornar nullo retornar um error', async () => {
+    test('Garantir que se o produtoRepository getById retornar nullo retornar um error', async () => {
         const { sut, produtoRepository } = makeSut()
         jest.spyOn(produtoRepository, 'getById').mockReturnValueOnce(null)
         const error = await sut.buscar(1)
